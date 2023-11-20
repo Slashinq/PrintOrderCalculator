@@ -1,0 +1,99 @@
+import java.util.Scanner;
+
+public class PrintOrderCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Print Order Calculator!");
+
+        int printQuantities;
+        String size;
+        String finish;
+        String processingTime;
+        String promotionCode;
+
+        System.out.println("Enter print quantities (from 1 to 100): ");
+        printQuantities = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter size (4x6, 5x7, or 8x10): ");
+        size = scanner.nextLine().toLowerCase();
+
+        System.out.println("Enter finish (glossy or matte): ");
+        finish = scanner.nextLine().toLowerCase();
+
+        System.out.println("Enter processing time (next day or 1-hour): ");
+        processingTime = scanner.nextLine().toLowerCase();
+
+        System.out.println("Enter promotion code (if any): ");
+        promotionCode = scanner.nextLine().toUpperCase();
+
+        double totalCost = calculateTotalCost(printQuantities, size, finish, processingTime, promotionCode);
+
+        System.out.println("Total cost for the order: $" + totalCost);
+    }
+
+    public static double calculateTotalCost(int printQuantities, String size, String finish,
+                                            String processingTime, String promotionCode) {
+        double costPerPrint = 0;
+
+        if (size.equals("4x6")) {
+            costPerPrint = 0.14;
+            if (printQuantities > 50 && printQuantities <= 75) {
+                costPerPrint = 0.12;
+            } else if (printQuantities > 75) {
+                costPerPrint = 0.10;
+            }
+
+            if (finish.equals("matte")) {
+                costPerPrint += 0.02;
+            }
+        } else if (size.equals("5x7")) {
+            costPerPrint = 0.34;
+            if (printQuantities > 50 && printQuantities <= 75) {
+                costPerPrint = 0.31;
+            } else if (printQuantities > 75) {
+                costPerPrint = 0.28;
+            }
+
+            if (finish.equals("matte")) {
+                costPerPrint += 0.03;
+            }
+        } else if (size.equals("8x10")) {
+            costPerPrint = 0.68;
+            if (printQuantities > 50 && printQuantities <= 75) {
+                costPerPrint = 0.64;
+            } else if (printQuantities > 75) {
+                costPerPrint = 0.60;
+            }
+
+            if (finish.equals("matte")) {
+                costPerPrint += 0.04;
+            }
+        }
+
+        double totalCost = 0;
+
+        if (promotionCode.equals("N56M2") && printQuantities == 100 &&
+                size.equals("4x6") && finish.equals("glossy") && processingTime.equals("next day")) {
+            totalCost = printQuantities * costPerPrint - 2.00;
+        } else {
+            totalCost = printQuantities * costPerPrint;
+        }
+
+        if (processingTime.equals("1-hour")) {
+            if (printQuantities <= 60) {
+                totalCost += 1.00;
+            } else {
+                totalCost += 1.50;
+            }
+        }
+
+        if (totalCost > 35.00) {
+            totalCost *= 0.95;
+        }
+
+        return totalCost;
+    }
+}
