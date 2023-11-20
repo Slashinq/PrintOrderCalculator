@@ -1,0 +1,14 @@
+1.	Launch the Program:
+    •	Run the Java program named PrintOrderCalculator.
+    •	You'll see prompts in the console asking for specific details about your print order.
+2.	Enter Print Details:
+    •	Input the number of prints you want (from 1 to 100).
+    •	Specify the size for the prints: 4x6, 5x7, or 8x10.
+    •	Choose the finish: glossy or matte.
+    •	Select the processing time: next day or 1-hour.
+3.	Provide Promotion Code (Optional):
+    •	If you have a promotion code (e.g., N56M2), input it when prompted.
+4.	Get Total Cost:
+    •	The program will calculate and display the total cost for your print order based on the provided details.
+5.	Exit the Program:
+    •	After obtaining the total cost for your print order, the program will conclude its calculations. You can exit or rerun the program for different orders.
