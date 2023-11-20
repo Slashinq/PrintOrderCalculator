@@ -1,0 +1,5 @@
+Bug 1:
+The bug causes the promotion code discount to be applied to orders with quantities other than 100 prints instead of the discount only applying to orders of 100 prints with specific size, finish, and processing time.
+
+Bug 2:
+The bug leads to the program applying the higher processing time charge to orders with 60 prints or fewer instead of higher charge applying to orders with more than 60 prints. This results in incorrect cost calculations for 1 hour processing time and affecting the overall cost of the print orders
